@@ -1,0 +1,82 @@
+{
+  "version": 1,
+  "author": "Marko",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-nano",
+      "id": "nano",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -120,
+      "left": 300,
+      "attrs": {
+        "pins": "i2c",
+        "background": "blue",
+        "color": "white"
+      }
+    },
+    {
+      "type": "wokwi-potentiometer",
+      "id": "pot1",
+      "top": 210,
+      "left": 330,
+      "attrs": {
+        "value": "600"
+      }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 210,
+      "left": 520,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 115,
+      "left": 520,
+      "attrs": {
+        "color": "red"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 120,
+      "left": 420,
+      "attrs": {
+        "value": "220"
+      }
+    }
+  ],
+  "connections": [
+    ["nano:5V", "lcd1:VCC", "red"],
+    ["nano:GND.1", "lcd1:GND", "black"],
+    ["nano:A4", "lcd1:SDA", "green"],
+    ["nano:A5", "lcd1:SCL", "blue"],
+
+    ["nano:5V", "pot1:VCC", "red"],
+    ["nano:GND.1", "pot1:GND", "black"],
+    ["nano:A1", "pot1:SIG", "orange"],
+
+    ["nano:5V", "ldr1:VCC", "red"],
+    ["nano:GND.1", "ldr1:GND", "black"],
+    ["nano:A0", "ldr1:AO", "green"],
+
+    ["nano:9", "r1:1", "purple"],
+    ["r1:2", "led1:A", "purple"],
+    ["led1:C", "nano:GND.1", "black"]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf",
+    "convertEol": false
+  }
+}
